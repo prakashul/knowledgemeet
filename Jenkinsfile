@@ -2,7 +2,6 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumTo
 node {
   currentBuild.result = "SUCCESS"
 
-
 git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
 git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   stage ('Workspace Cleanup') {
@@ -17,4 +16,16 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
     sh 'git checkout '+env.branch
     sh 'cat file.txt'
   }
+  stage ('Build Artifact') {
+    sh 'echo Building Artifact'
+  }
+
+stage ('Push Artifact') {
+    sh 'echo Pushing Artifact'
+  }
+
+stage ('Deploy Artifact') {
+    sh 'echo Deploying Artifact'
+  }
+
 }
