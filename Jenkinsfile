@@ -2,8 +2,9 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumTo
 node {
   currentBuild.result = "SUCCESS"
 
-git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
 
+git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
+git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   stage ('Workspace Cleanup') {
     deleteDir()
   }
@@ -16,5 +17,4 @@ git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
     sh 'git checkout '+env.branch
     sh 'cat file.txt'
   }
-  
 }
