@@ -21,11 +21,15 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   }
 
 stage ('Push Artifact') {
-    sh 'echo Pushing Artifact'
+    if (env.branch == "staging") {
+	do 
+    sh 'echo Pushing Artifact' }
+    else { 
+    sh 'echo Branch is Not staging, skipping pushing artifact'}
   }
+  
 
 stage ('Deploy Artifact') {
     sh 'echo Deploying Artifact'
   }
-
 }
