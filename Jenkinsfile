@@ -30,9 +30,21 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	else {
 		sh 'echo Skipping Stage as branch is not fucking staging'
              }
+ 	try { 
 	timeout(time: 1, unit: 'MINUTES') {
 	input 'Do you want to proceed to the Deployment?'
+	}
   }
+	catch(err) {
+	def user = err.getCauses()[0].getUser()
+    		if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+        		didTimeout = true
+    						} 
+		else {
+        		userInput = false
+        		sh 'echo "Aborted by: [${user}]"'
+    }	
+}
 }
 
 stage ('Deploy') {
