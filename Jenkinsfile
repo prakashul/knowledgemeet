@@ -4,12 +4,14 @@ node {
 
 git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
 git_repo_url="https://github.com/prakashul/knowledgemeet.git"
+
+
   stage ('Workspace Cleanup') {
     deleteDir()
   }
       
   stage ('SCM Checkout') {
-    git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url          
+    git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url
   }
 
   stage ('Branch Checkout') {
@@ -21,10 +23,11 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   }
 
 stage ('Push Artifact') {
-    if (env.branch == "staging") {
-    sh 'echo Pushing Artifact' }
-    else { 
-    sh 'echo Branch is Not staging, skipping pushing artifact'}
+    when {  
+		expression { 
+	env.branch == "staging" 
+	}
+    sh 'echo Pushing Artifact As Branch given is staging' }
   }
   
 
