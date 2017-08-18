@@ -23,8 +23,8 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   }
 
 stage ('Push Artifact') {
-    when{  
-		branch 'staging'
+    when {  
+		expression { env.branch == 'staging' }
 			}
     steps { 
     sh 'echo Pushing Artifact As Branch given is staging' 
