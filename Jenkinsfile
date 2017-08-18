@@ -1,10 +1,11 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10', daysToKeepStr: '180', numToKeepStr: '120')), disableConcurrentBuilds(), parameters([string(defaultValue: 'staging', description: '', name: 'branch')]), pipelineTriggers([])])
 pipeline {
 	agent any
+environment {
 
-def git_repo_credential_token = "d60cc6087e37205c8813e95f004597a926813e0e"
-def git_repo_url = "https://github.com/prakashul/knowledgemeet.git"
-
+git_repo_credential_token = "d60cc6087e37205c8813e95f004597a926813e0e"
+git_repo_url = "https://github.com/prakashul/knowledgemeet.git"
+}
 stages {
 
   stage ('Workspace Cleanup') {
