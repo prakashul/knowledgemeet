@@ -1,4 +1,5 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10', daysToKeepStr: '180', numToKeepStr: '120')), disableConcurrentBuilds(), parameters([string(defaultValue: 'production', description: '', name: 'branch'), string(defaultValue: '$BUILD_ID', description: '', name: 'tag')]), pipelineTriggers([])])
+
 node {
   currentBuild.result = "SUCCESS"
 
@@ -22,14 +23,14 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
     sh 'echo Building Artifact'
   }
 
-stage ('Push Artifact') {
-    when {  
-		expression { 
-	env.branch == "staging" 
-	}
-    sh 'echo Pushing Artifact As Branch given is staging' }
+  stage ('Push Artifact') {
+    if ( env.branch == 'staging') { 
+    sh 'echo Pushing Artifact As Branch given is staging' 
+         }
+	else {
+		sh 'echo Skipping Stage as branch is not staging'
+             }
   }
-  
 
 stage ('Deploy Artifact') {
     sh 'echo Deploying Artifact'
