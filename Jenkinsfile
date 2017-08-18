@@ -31,12 +31,12 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 		sh 'echo Skipping Stage as branch is not fucking staging'
              }
  	try { 
-	timeout(time: 10, unit: 'SECONDS') {
+	timeout(time: 20, unit: 'SECONDS') {
 	input 'Do you want to proceed to the Deployment?'
 	}
   }
 	catch(err) {
-    		sh 'echo "Failed Due to : err.stacktrace"'
+    		sh 'echo "Failed Due to : ${err.stacktrace}"'
     						} 
 }
 
