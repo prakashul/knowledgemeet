@@ -37,10 +37,9 @@ stages {
   
   stage ('Push Artifact') {
 	when {
-		script {
-		env.branch 'staging' }}
+		branch 'staging' }
 	steps {
-    	     echo Pushing Artifact As Branch given is staging
+    	     echo 'Pushing Artifact As Branch given is staging'
          }
  	script {
 	try { 
