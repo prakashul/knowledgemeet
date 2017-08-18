@@ -30,10 +30,16 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	else {
 		sh 'echo Skipping Stage as branch is not staging'
              }
-	input 'Deploy Artifact?'
   }
 
-stage ('Deploy Artifact') {
-    sh 'echo Deploying Artifact'
+stage ('Deploy') {
+    
+	input 'Deploy?'
+	milestone()
+	lock('Deploy') { 
+		node { 
+			sh 'echo Deploying'
+		    }
   }
+}
 }
