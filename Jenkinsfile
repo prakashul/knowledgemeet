@@ -2,6 +2,7 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumTo
 
 pipeline {
 	agent any
+
 environment {
 
 git_repo_credential_token = 'd60cc6087e37205c8813e95f004597a926813e0e'
@@ -21,24 +22,26 @@ stages {
 
     script {
     git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url
-  }}}
+  	   }
+              }
+                         }      
 
   stage ('Branch Checkout') {
     steps {
     sh 'git checkout '+env.branch
-    sh 'cat file.txt'
-  }}
+          }
+                            }               
 
   stage ('Build Artifact') {
     steps {
     sh 'echo Building Artifact'
-  }}
+          }                       
+                            }
 
   
   stage ('Push Artifact') {
+		when { branch 'staging' }
 	steps {
-	when {
-		branch 'staging' }
     	     echo 'Pushing Artifact As Branch given is staging'
  	script {
 	try { 
@@ -50,7 +53,10 @@ stages {
     		err.printStackTrace()
     						} 
 		sh 'echo Proceeding'
-}}}
+	       }
+            }          
+                          }             
+
 
 stage ('Deploy') {
   steps {
