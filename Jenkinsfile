@@ -9,20 +9,26 @@ git_repo_url = 'https://github.com/prakashul/knowledgemeet.git'
 stages {
 
   stage ('Workspace Cleanup') {
+    steps {
     deleteDir()
+	}
   }
       
   stage ('SCM Checkout') {
+	steps {
     git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url
-  }
+  }}
 
   stage ('Branch Checkout') {
+    steps {
     sh 'git checkout '+env.branch
     sh 'cat file.txt'
-  }
+  }}
+
   stage ('Build Artifact') {
+    steps {
     sh 'echo Building Artifact'
-  }
+  }}
 
   stage ('Push Artifact') {
 	when {
@@ -43,7 +49,8 @@ stages {
 }
 
 stage ('Deploy') {
+  steps {
 			sh 'echo Deploying'
 		 }
-}
+}}
 }
