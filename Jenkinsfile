@@ -36,11 +36,10 @@ stages {
 
   
   stage ('Push Artifact') {
+	steps {
 	when {
 		branch 'staging' }
-	steps {
     	     echo 'Pushing Artifact As Branch given is staging'
-         }
  	script {
 	try { 
 	timeout(time: 20, unit: 'SECONDS') {
@@ -51,7 +50,7 @@ stages {
     		err.printStackTrace()
     						} 
 		sh 'echo Proceeding'
-}}
+}}}
 
 stage ('Deploy') {
   steps {
