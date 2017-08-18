@@ -36,8 +36,7 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	}
   }
 	catch(err) {
-		def usererror = err.getCauses()[0].getUser()
-    		echo "Failed Due to :\n ${usererror}"
+    		sh 'echo "Failed Due to : err.stacktrace"'
     						} 
 }
 
