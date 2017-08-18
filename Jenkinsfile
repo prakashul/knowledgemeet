@@ -1,5 +1,5 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10', daysToKeepStr: '180', numToKeepStr: '120')), disableConcurrentBuilds(), parameters([string(defaultValue: 'production', description: '', name: 'branch'), string(defaultValue: '$BUILD_ID', description: '', name: 'tag')]), pipelineTriggers([])])
-
+pipeline {
 node {
   currentBuild.result = "SUCCESS"
 
@@ -47,4 +47,5 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 stage ('Deploy') {
 			sh 'echo Deploying'
 		 }
+}
 }
