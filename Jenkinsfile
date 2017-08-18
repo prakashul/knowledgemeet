@@ -39,9 +39,8 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	}
   }
 	catch(err) {
-		def eror = err.getCauses()
-		
-		sh ''echo Input Failed due to: \n ${eror}'
+		def usererror = err.getCauses()[0].getUser()
+    		echo "Failed Due to :\n ${usererror}"
     						} 
 }
 
