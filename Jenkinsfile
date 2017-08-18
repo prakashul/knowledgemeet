@@ -30,6 +30,7 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	else {
 		sh 'echo Skipping Stage as branch is not fucking staging'
              }
+	timeout(time: 1, unit: 'MINUTES') {
 	input 'Do you want to proceed to the Deployment?'
   }
 
