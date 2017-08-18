@@ -36,7 +36,8 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	}
   }
 	catch(err) {
-    		err.stackTrace()
+    		err.stackTrace
+		err.message
 		
     						} 
 		sh 'echo Proceeding'
