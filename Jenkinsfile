@@ -26,10 +26,9 @@ stage ('Push Artifact') {
     when {  
 		expression { 
 	env.branch == "staging" 
-	}
     sh 'echo Pushing Artifact As Branch given is staging' }
   }
-  
+  }
 
 stage ('Deploy Artifact') {
     sh 'echo Deploying Artifact'
