@@ -1,14 +1,16 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10', daysToKeepStr: '180', numToKeepStr: '120')), disableConcurrentBuilds(), parameters([string(defaultValue: 'production', description: '', name: 'branch'), string(defaultValue: '$BUILD_ID', description: '', name: 'tag')]), pipelineTriggers([])])
 pipeline {
+	agent any
+	parameters {
+        string(name: 'branch', defaultValue: 'staging', description: 'Enter GIT Branch')
+                }
+
 node {
   currentBuild.result = "SUCCESS"
 
 git_repo_credential_token="d60cc6087e37205c8813e95f004597a926813e0e"
 git_repo_url="https://github.com/prakashul/knowledgemeet.git"
-
- parameters {
-        string(name: 'branch', defaultValue: 'staging', description: 'Enter GIT Branch')
-		}
+stages {
 
   stage ('Workspace Cleanup') {
     deleteDir()
@@ -47,5 +49,6 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 stage ('Deploy') {
 			sh 'echo Deploying'
 		 }
+}
 }
 }
