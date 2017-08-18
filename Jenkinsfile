@@ -34,7 +34,6 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
   }
 
 stage ('Deploy') {
-		 build job: 'Deploy', propagate: false
 			sh 'echo Deploying'
 		 }
 }
