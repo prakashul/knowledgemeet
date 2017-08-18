@@ -33,6 +33,7 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
 	timeout(time: 1, unit: 'MINUTES') {
 	input 'Do you want to proceed to the Deployment?'
   }
+}
 
 stage ('Deploy') {
 			sh 'echo Deploying'
