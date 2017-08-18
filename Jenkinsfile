@@ -21,6 +21,7 @@ stages {
 	steps {
 
     script {
+    echo '${env.gitlabTargetBranch}'
     git branch: branch, credentialsId: git_repo_credential_token, url: git_repo_url
   	   }
               }
