@@ -5,7 +5,7 @@ pipeline {
 
 environment {
 
-git_repo_credential_token = 'd60cc6087e37205c8813e95f004597a926813e0e'
+// git_repo_credential_token = 'd60cc6087e37205c8813e95f004597a926813e0e'
 git_repo_url = 'https://github.com/prakashul/knowledgemeet.git'
 
 }
