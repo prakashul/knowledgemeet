@@ -28,7 +28,7 @@ git_repo_url="https://github.com/prakashul/knowledgemeet.git"
     sh 'echo Pushing Artifact As Branch given is staging' 
          }
 	else {
-		sh 'echo Skipping Stage as branch is not staging'
+		sh 'echo Skipping Stage as branch is not fucking staging'
              }
 	input 'Do you want to proceed to the Deployment?'
   }
