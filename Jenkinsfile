@@ -36,6 +36,7 @@ stages {
   stage ('Build Artifact') {
     steps {
     sh 'echo Building Artifact'
+	    sleep(10000)
           }                       
                             }
 
